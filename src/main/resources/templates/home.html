@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>PIZZE</h1>
+	<a
+		href="/pizza/create"
+	>
+		CREATE NEW PIZZA
+	</a>
+	<h2
+		th:if="${pizzas.size() < 1}"
+	>NON CI SONO PIZZE PRESENTI AL MOMENTO</h2>
+	<ul
+		th:unless="${pizzas.size() < 1}"
+	>
+		<li
+			th:each="pizza : ${pizzas}"
+			th:object="${pizza}"
+		>
+			([[*{id}]]) [[*{name}]] - [[*{price}]]<br>
+			[[*{description}]]<br th:if="*{description}">
+			<a
+				th:href="@{/pizza/update/{id} (id=*{id})}"
+			>
+				UPDATE
+			</a> - 
+			<a
+				th:href="@{/pizza/delete/{id} (id=*{id})}"
+			>
+				DELETE
+			</a>
+		</li>
+	</ul>
+</body>
+</html>
