@@ -1,6 +1,5 @@
 package org.pizzahat.com.demo.pojo;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,27 +7,31 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table
-public class Pizza {
+public class Drink {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@NotNull(message = "no null name")
-	@Column(unique = true)
+	@NotEmpty(message = "name can't be empty")
+	@Column(unique = true, length = 64)
 	private String name;
+	
 	@Lob
 	private String description;
+	
 	@NotNull(message = "price can't be null")
+	@Min(value = 1, message = "price can't be 0 or lower")
 	private Integer price;
 	
-	public Pizza() { }
-	public Pizza(String name, String description, int price) {
+	public Drink() { }
+	public Drink(String name, String description, Integer price) {
 		
 		setName(name);
 		setDescription(description);
@@ -59,11 +62,12 @@ public class Pizza {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	
+
 	@Override
 	public String toString() {
 		
-		return "(" + getId() + ") " + getName() + " - " + getPrice()
-			+ "\n" + getDescription();
+		return "Drink:"
+				+ "\n" + getName() + " - " + getPrice() 
+				+ "\n" + getDescription();
 	}
 }

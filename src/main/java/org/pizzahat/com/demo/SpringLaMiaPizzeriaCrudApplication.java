@@ -1,6 +1,10 @@
 package org.pizzahat.com.demo;
 
+import java.util.List;
+
+import org.pizzahat.com.demo.pojo.Drink;
 import org.pizzahat.com.demo.pojo.Pizza;
+import org.pizzahat.com.demo.serv.DrinkServ;
 import org.pizzahat.com.demo.serv.PizzaServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +16,9 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 
 	@Autowired
 	private PizzaServ pizzaServ;
+	
+	@Autowired
+	private DrinkServ drinkServ;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringLaMiaPizzeriaCrudApplication.class, args);
@@ -32,5 +39,18 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 		
 //		List<Pizza> pizzas = pizzaServ.findAll();
 //		System.out.println(pizzas);
+		
+		Drink d1 = new Drink("drink 1", "desc drink 1", 10000);
+		Drink d2 = new Drink("drink 2", "desc drink 2", 12000);
+		Drink d3 = new Drink("drink 3", "desc drink 3", 1000);
+		Drink d4 = new Drink("drink 4", "desc drink 4", 20000);
+		
+		drinkServ.save(d1);
+		drinkServ.save(d2);
+		drinkServ.save(d3);
+		drinkServ.save(d4);
+		
+		List<Drink> drinks = drinkServ.findAll();
+		System.out.println(drinks);
 	}
 }

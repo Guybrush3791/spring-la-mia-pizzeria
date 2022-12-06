@@ -6,6 +6,21 @@
 </head>
 <body>
 	<h1>NEW PIZZA</h1>
+	
+	<div th:if="${errors}">
+		<span>
+			ERRORI:<br>
+			<ul>
+			  <li
+			  	th:each="e : ${errors}"
+			  	th:object="${e}"
+			  >
+			  	[[*{defaultMessage}]]
+			  </li>
+			</ul>
+		</span>
+	</div>
+	
 	<form
 		method="POST"
 		action="/pizza/create"

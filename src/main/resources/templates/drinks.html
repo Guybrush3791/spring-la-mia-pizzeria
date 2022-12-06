@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Drinks</h1>
+	<a
+		href="/drink/create"
+	>
+		CREATE NEW DRINK
+	</a>
+	<ul>
+		<li
+			th:each="drink : ${drinks}"
+			th:object="${drink}"
+		>
+			([[*{id}]]) [[*{name}]] - [[*{price}]]<br>
+			[[*{description}]]
+		</li>
+	</ul>
+</body>
+</html>
