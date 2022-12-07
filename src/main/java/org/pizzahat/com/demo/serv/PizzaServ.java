@@ -30,4 +30,10 @@ public class PizzaServ {
 		
 		return pizzaRepo.findById(id);
 	}
+	public List<Pizza> findByName(String name) {
+		
+//		return pizzaRepo.findByNameContainingIgnoreCase(name);
+		return pizzaRepo
+				.findByNameIgnoreCaseContainingOrDescriptionContaining(name, name);
+	}
 }

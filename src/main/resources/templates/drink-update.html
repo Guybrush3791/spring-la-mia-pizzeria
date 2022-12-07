@@ -4,14 +4,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	<h1>Drinks</h1>
+<body
+	th:object="${drink}"
+>
+	<h1>Drinks: [[*{id}]]</h1>
 	<div th:insert="frag :: error()" />
 	<form
-		th:object="${drink}"
+		
 		method="POST"
-		action="/drink/create"
+		action="/drink/update"
 	>
+		<input type="text" name="id" th:field="*{id}" style="display:none">
 		<label>Name</label>
 		<input type="text" name="name" th:field="*{name}">
 		<br>

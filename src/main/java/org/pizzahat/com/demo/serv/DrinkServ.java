@@ -1,6 +1,7 @@
 package org.pizzahat.com.demo.serv;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.pizzahat.com.demo.pojo.Drink;
 import org.pizzahat.com.demo.repo.DrinkRepo;
@@ -24,5 +25,13 @@ public class DrinkServ {
 	public List<Drink> findAll() {
 		
 		return drinkRepo.findAll();
+	}
+	public Optional<Drink> findById(int id) {
+		
+		return drinkRepo.findById(id);
+	}
+	public List<Drink> findByName(String name) {
+		
+		return drinkRepo.findByNameContainingIgnoreCase(name);
 	}
 }

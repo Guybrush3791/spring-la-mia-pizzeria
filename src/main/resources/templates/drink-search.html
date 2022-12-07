@@ -7,17 +7,12 @@
 <body>
 	<h1>Drinks</h1>
 	<div th:insert="frag :: error()" />
-	<a
-		href="/drink/create"
-	>
-		CREATE NEW DRINK
-	</a>
-	<br>
-	<a
-		href="/drink/search"
-	>
-		SEARCH FOR DRINK
-	</a>
+	<form>
+		<label>Name: </label>
+		<input type="text" name="q" th:value="${query}">
+		<br><br>
+		<input type="submit" value="SEARCH">
+	</form>
 	<ul>
 		<li
 			th:each="drink : ${drinks}"

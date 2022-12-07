@@ -66,7 +66,7 @@ public class Drink {
 	@Override
 	public String toString() {
 		
-		return "Drink:"
+		return "Drink: " + getId()
 				+ "\n" + getName() + " - " + getPrice() 
 				+ "\n" + getDescription();
 	}
